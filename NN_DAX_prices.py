@@ -72,20 +72,20 @@ mse = mean_squared_error(y_test, y_pred)
 print('Mean Squared Error:', mse)
 
 # Predykcja dla danych z roku 2023
-df_2020 = yf.download("^GDAXI", start=datetime.datetime(2023, 1, 1), end=datetime.datetime(2023, 5, 6))
-df_2020.reset_index(inplace=True)
-generate_features(df_2020)
+df_2023 = yf.download("^GDAXI", start=datetime.datetime(2023, 1, 1), end=datetime.datetime(2023, 5, 6))
+df_2023.reset_index(inplace=True)
+generate_features(df_2023)
 
-X_2020 = df_2020[['Open', 'High', 'Low', 'Close', 'Volume', 'prev_close', 'return', 'ma_5', 'ma_20', 'rsi']].values
+X_2020 = df_2023[['Open', 'High', 'Low', 'Close', 'Volume', 'prev_close', 'return', 'ma_5', 'ma_20', 'rsi']].values
 X_2020_scaled = scaler.transform(X_2020)
 X_2020_imputed = imputer.transform(X_2020_scaled)
 predictions_2020 = model.predict(X_2020_imputed) # Dokonuje predykcji na podstawie wcześniej zdefiniowanego modelu na przetworzonych danych X_2020_imputed i zapisuje wyniki w obiekcie predictions_2020.
 
-df_2020['Predicted_Close'] = predictions_2020
+df_2023['Predicted_Close'] = predictions_2020
 
-dates = df_2020['Date']
-close_prices = df_2020['Close']
-predicted_prices = df_2020['Predicted_Close']
+dates = df_2023['Date']
+close_prices = df_2023['Close']
+predicted_prices = df_2023['Predicted_Close']
 
 plt.figure(figsize=(12, 6))
 plt.plot(dates, close_prices, label='Actual Close', color='b')
