@@ -1,6 +1,6 @@
 # NN_DAX_prices_forecast
 
-Stock Price Prediction using MLP Regressor
+Stock Price Prediction using MLP Regressor<br />
     This Python script utilizes the yfinance library to download historical stock market data for the DAX index (^GDAXI) from Yahoo Finance. The script then generates various features for the stock data, trains a Multi-Layer Perceptron (MLP) Regressor model using the scikit-learn library, and predicts future stock prices.
 
 Features Generated
